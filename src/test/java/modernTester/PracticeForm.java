@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.util.List;
 
 public class PracticeForm extends BaseTest {
@@ -53,18 +54,13 @@ public class PracticeForm extends BaseTest {
         Select selectCommands = new Select(driver.findElement(By.id("selectSeleniumCommands")));
         selectCommands.selectByValue("switch-commands");
 
-        selectCommands.selectByVisibleText("Switch Commands");
-        selectCommands.selectByIndex(2); // mozna inaczej
-
         /** select wait commands */
-        selectCommands.selectByValue("wait-commands");
         selectCommands.selectByVisibleText("Wait Commands");
-        selectCommands.selectByIndex(3);
 
         /** choose file */
+        File file = new File("src/main/resources/test.txt");
         WebElement uploadFileInput = driver.findElement(By.cssSelector("input[type='file']"));
-        String path = "C:\\Users\\pmichnik\\Desktop\\test_selenium.txt";
-        uploadFileInput.sendKeys(path);
+        uploadFileInput.sendKeys(file.getAbsolutePath());
 
         /** additional information */
         WebElement additionalInfo = driver.findElement(By.id("additionalInformations"));
@@ -74,15 +70,13 @@ public class PracticeForm extends BaseTest {
         WebElement testFileToDowload = driver.findElement(By.cssSelector("[class='btn btn-secondary btn-lg active']"));
         testFileToDowload.click();
 
-        /** sign in */
+        /** click sign in */
         WebElement signIn = driver.findElement(By.cssSelector("[class='btn btn-primary']"));
         signIn.click();
 
+        /** check that form send with cuccess */
         String textSuccessSignIn = driver.findElement(By.cssSelector("#validator-message"))
                 .getText();
-
         Assert.assertEquals(textSuccessSignIn, "Form send with success");
-
-
     }
 }

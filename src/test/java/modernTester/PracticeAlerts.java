@@ -1,8 +1,12 @@
 package modernTester;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class PracticeAlerts extends BaseTest {
 
@@ -12,46 +16,48 @@ public class PracticeAlerts extends BaseTest {
         driver.get("https://seleniumui.moderntester.pl/alerts.php");
 
         /** select simple alert pop up */
-        driver.findElement(By.cssSelector("#simple-alert")).click(); //# oznacza iD
+        WebElement selectSimpleAlert = driver.findElement(By.cssSelector("#simple-alert"));
+        selectSimpleAlert.click();
         driver.switchTo().alert().accept();
-        //Jak to zapisac jak w practice form Webelement...->
 
+        /** check text has been show */
         String textPromptAlertPopUp = driver.findElement(By.cssSelector("#simple-alert-label"))
                 .getText();
-
         Assert.assertEquals(textPromptAlertPopUp, "OK button pressed");
 
         /** confirm prompt alert box */
-        driver.findElement(By.cssSelector("#prompt-alert")).click();
+        WebElement selectPromptPopUp = driver.findElement(By.cssSelector("#prompt-alert"));
+        selectPromptPopUp.click();
         driver.switchTo().alert().sendKeys("Lord Vader");
         driver.switchTo().alert().accept();
 
+        /** check text has been show */
         String textPromptAlertBox = driver.findElement(By.cssSelector("#prompt-label"))
                 .getText();
-
         Assert.assertEquals(textPromptAlertBox, "Hello Lord Vader! How are you today?");
 
         /** confirm alert box OK */
-        driver.findElement(By.cssSelector("#confirm-alert")).click();
+        WebElement selectConfirmPopUp = driver.findElement(By.cssSelector("#confirm-alert"));
+        selectConfirmPopUp.click();
         driver.switchTo().alert().accept();
 
+        /** check text has been show */
         String textAlertBoxOk = driver.findElement(By.cssSelector("#confirm-label"))
                 .getText();
-
         Assert.assertEquals(textAlertBoxOk, "You pressed OK!");
 
         /** dissmis alert box OK */
         driver.findElement(By.cssSelector("#confirm-alert")).click();
         driver.switchTo().alert().dismiss();
 
+        /** check text has been show */
         String textAlertBoxCancel = driver.findElement(By.cssSelector("#confirm-label"))
                 .getText();
-
         Assert.assertEquals(textAlertBoxCancel, "You pressed Cancel!");
 
-//        /** delayded alert */
-//        driver.findElement(By.cssSelector("#delayed-alert")).click();
-//        driver.switchTo().alert()   DOKONCZYC
-
+        /** delayded alert */
+        WebElement selectDelayedAlert = driver.findElement(By.cssSelector("#delayed-alert"));
+        selectDelayedAlert.click();
+        //jak zatwierdzic alert po czasie ?
     }
 }

@@ -62,35 +62,5 @@ public class PracticeIframes extends BaseTest {
         driver.switchTo().defaultContent();
 
         //Jak wybrac z gornego menu Basic ?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
 }

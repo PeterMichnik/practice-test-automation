@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-
 public class BaseTest {
     public WebDriver driver;
 
@@ -20,13 +19,9 @@ public class BaseTest {
         options.addArguments("start-maximized");
 
         driver = new ChromeDriver(options);
-
     }
-
     @AfterMethod
     public void tearDrown() {
         driver.quit();
-
     }
-
 }

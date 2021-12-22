@@ -9,10 +9,11 @@ import java.util.List;
 public class PracticeTable extends BaseTest {
 
     @Test
-    public void shouldPrintPeaksOver4000m() {
+    public void getAllRows(){
 
         driver.get("https://seleniumui.moderntester.pl/table.php");
 
+        /** get all rows from table */
         List<WebElement> rows1 = driver.findElements(By.cssSelector("tbody tr"));
         for (WebElement row : rows1) {
 
@@ -23,13 +24,14 @@ public class PracticeTable extends BaseTest {
             int height = Integer.parseInt(row.findElement(By.xpath("td[4]")).getText());
 
             System.out.println(peak + " " + mountainRange + " " + state + " " + height);
-
-
         }
+    }
+    @Test
+    public void shouldPrintPeaksOver4000m() {
 
-        System.out.println(" ");
+        driver.get("https://seleniumui.moderntester.pl/table.php");
 
-        /** Print out 'Rank', 'Peak' and 'Mountain range' of mountains that are in "Switzerland" and are higher than 4000 m */
+        /** print out 'Rank', 'Peak' and 'Mountain range' of mountains that are in "Switzerland" and are higher than 4000 m */
         List<WebElement> rows = driver.findElements(By.cssSelector("tbody tr"));
 
         for (WebElement row : rows) {
