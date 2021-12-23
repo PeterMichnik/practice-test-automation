@@ -61,6 +61,7 @@ public class PracticeIframes extends BaseTest {
         /** Switch to the main frame */
         driver.switchTo().defaultContent();
 
-        //Jak wybrac z gornego menu Basic ?
+        //Jak wybrac z gornego menu Basic ? nie da sie kliknac na button
+        //div/ul/li/a[@class='nav-link dropdown-toggle']
     }
 }
