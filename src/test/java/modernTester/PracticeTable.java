@@ -7,25 +7,24 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class PracticeTable extends BaseTest {
-
     @Test
-    public void getAllRows(){
-
+    public void getAllRows() {
         driver.get("https://seleniumui.moderntester.pl/table.php");
 
         /** get all rows from table */
         List<WebElement> rows1 = driver.findElements(By.cssSelector("tbody tr"));
         for (WebElement row : rows1) {
 
-            // jak wypisac ranking gór
+            String rank = row.findElement(By.cssSelector("th")).getText();
             String peak = row.findElement(By.xpath("td[1]")).getText();
             String mountainRange = row.findElement(By.xpath("td[2]")).getText();
             String state = row.findElement(By.xpath("td[3]")).getText();
             int height = Integer.parseInt(row.findElement(By.xpath("td[4]")).getText());
 
-            System.out.println(peak + " " + mountainRange + " " + state + " " + height);
+            System.out.println(rank + " " + peak + " " + mountainRange + " " + state + " " + height);
         }
     }
+
     @Test
     public void shouldPrintPeaksOver4000m() {
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class PracticeIframes extends BaseTest {
 
     @Test
-    public void shouldFillIframe(){
+    public void shouldFillIframe() {
 
         driver.get("https://seleniumui.moderntester.pl/iframes.php");
 
@@ -50,18 +50,15 @@ public class PracticeIframes extends BaseTest {
         Select selectObject = new Select(selectContinents);
         selectObject.selectByValue("antarctica");
 
-//        /** select year of experience in iframe2 */  // jak nie pomylic nazw podobne nazwy w PracticeForm
-//        List<WebElement> yearOfExperience = driver.findElements(By.cssSelector("#gridRadios2"));
-//        yearOfExperience. // Jak zmienic z 1 roku na np. 3 ???
-
-        /** sign in in iframe2 */
-        WebElement signInButtonFrame2 = driver.findElement(By.cssSelector(".btn-primary"));
-        signInButtonFrame2.click();
+        /** select year of experience in iframe2 */
+        List<WebElement> yearOfExperience = driver.findElements(By.cssSelector("[name='gridRadios']"));
+        yearOfExperience.get(3).click();
+        driver.findElement(By.cssSelector("#gridRadios2")).click();
 
         /** Switch to the main frame */
         driver.switchTo().defaultContent();
 
-        //Jak wybrac z gornego menu Basic ? nie da sie kliknac na button
-        //div/ul/li/a[@class='nav-link dropdown-toggle']
+        WebElement clickBasicButton = driver.findElement(By.xpath("//a[contains(text(),'Basic')]"));
+        clickBasicButton.click();
     }
 }

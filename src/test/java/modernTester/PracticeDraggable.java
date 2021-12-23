@@ -5,20 +5,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
-
-public class PracticeDraggable extends  BaseTest{
+public class PracticeDraggable extends BaseTest {
 
     @Test
-    public void dragSquare(){
+    public void dragSquare() {
 
         driver.get("https://seleniumui.moderntester.pl/draggable.php");
 
         /** drag square to upper right */
         WebElement dragSquare = driver.findElement(By.cssSelector("#draggable"));
         Actions action = new Actions(driver);
-        action.clickAndHold(dragSquare).moveByOffset(1000,-80).release().perform();
-        //jak przeciagnac np. w prawy dolny rog ?
-
+        int dragSquareX = dragSquare.getLocation().getX();
+        int dragSquareWidth = dragSquare.getSize().getWidth();
+        int browserWindowWidth = driver.manage().window().getSize().width;
+        action
+                .clickAndHold(dragSquare)
+                .moveByOffset(browserWindowWidth - (dragSquareX + dragSquareWidth), 0)
+                .release()
+                .perform();
     }
 }

@@ -2,16 +2,17 @@ package modernTester;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class PracticeAlerts extends BaseTest {
 
     @Test
-    public void shouldAcceptAlerts() {
+    public void shouldConfirmAlertPopUp() {
 
         driver.get("https://seleniumui.moderntester.pl/alerts.php");
 
@@ -24,6 +25,12 @@ public class PracticeAlerts extends BaseTest {
         String textPromptAlertPopUp = driver.findElement(By.cssSelector("#simple-alert-label"))
                 .getText();
         Assert.assertEquals(textPromptAlertPopUp, "OK button pressed");
+    }
+
+    @Test
+    public void shouldConfirmPromptAlertBox() {
+
+        driver.get("https://seleniumui.moderntester.pl/alerts.php");
 
         /** confirm prompt alert box */
         WebElement selectPromptPopUp = driver.findElement(By.cssSelector("#prompt-alert"));
@@ -35,6 +42,12 @@ public class PracticeAlerts extends BaseTest {
         String textPromptAlertBox = driver.findElement(By.cssSelector("#prompt-label"))
                 .getText();
         Assert.assertEquals(textPromptAlertBox, "Hello Lord Vader! How are you today?");
+    }
+
+    @Test
+    public void shouldConfirmAlertBox() {
+
+        driver.get("https://seleniumui.moderntester.pl/alerts.php");
 
         /** confirm alert box OK */
         WebElement selectConfirmPopUp = driver.findElement(By.cssSelector("#confirm-alert"));
@@ -54,10 +67,16 @@ public class PracticeAlerts extends BaseTest {
         String textAlertBoxCancel = driver.findElement(By.cssSelector("#confirm-label"))
                 .getText();
         Assert.assertEquals(textAlertBoxCancel, "You pressed Cancel!");
+    }
 
-        /** delayded alert */
+    @Test
+    public void shouldConfirmDelayedAlert() {
+
+        driver.get("https://seleniumui.moderntester.pl/alerts.php");
+
         WebElement selectDelayedAlert = driver.findElement(By.cssSelector("#delayed-alert"));
         selectDelayedAlert.click();
-        //jak zatwierdzic alert po czasie ?
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
     }
 }
