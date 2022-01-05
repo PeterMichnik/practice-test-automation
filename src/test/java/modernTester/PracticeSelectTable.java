@@ -3,34 +3,32 @@ package modernTester;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class PracticeSelectTable extends BaseTest {
 
     @Test
-    public void selectTable(){
+    public void selectTable() {
 
         driver.get("https://seleniumui.moderntester.pl/selectable.php");
+        Actions actions = new Actions(driver);
 
-        WebElement selectIteam1 = driver.findElement(By.xpath("//*[@id='selectable']/li[1]"));
-        WebElement selectIteam3 = driver.findElement(By.xpath("//*[@id='selectable']/li[3]"));
-//
-//        action.keyDown(Keys.CONTROL)
-//                .click(el1)
-//                .click(el2)
-//                .click(el3)
-//                .perform();
-//        https://stackoverflow.com/questions/53581400/how-to-select-multiple-elements-in-selenium-not-select-option
+        WebElement first_WebElement = driver.findElement(By.xpath("//*[@id='selectable']/li[1]"));
+        WebElement third_WebElement = driver.findElement(By.xpath("//*[@id='selectable']/li[3]"));
+        WebElement fourth_WebElement = driver.findElement(By.xpath("//*[@id='selectable']/li[4]"));
 
+        actions.keyDown(Keys.LEFT_CONTROL)
+                .click(first_WebElement)
+                .click(third_WebElement)
+                .click(fourth_WebElement)
+                .build()
+                .perform();
 
-
-
-
-
-
-
+//        String textSuccessAppeared = driver.findElement(By.xpath("//div/p[.='#1']"))
+//                .getText();
+//        Assert.assertEquals(textSuccessAppeared, "#1"); // nie wiem
 
     }
 }

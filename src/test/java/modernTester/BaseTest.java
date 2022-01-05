@@ -19,6 +19,8 @@ public class BaseTest {
         options.addArguments("start-maximized");
 
         driver = new ChromeDriver(options);
+
+
     }
     @AfterMethod
     public void tearDrown() {
