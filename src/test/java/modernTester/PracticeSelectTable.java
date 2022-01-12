@@ -26,9 +26,8 @@ public class PracticeSelectTable extends BaseTest {
                 .build()
                 .perform();
 
-//        String textSuccessAppeared = driver.findElement(By.xpath("//div/p[.='#1']"))
-//                .getText();
-//        Assert.assertEquals(textSuccessAppeared, "#1"); // nie wiem
-
+        String text = driver.findElement(By.cssSelector("#feedback"))
+                .getText();
+        Assert.assertEquals(text, "You've selected: #1 #3 #4.");
     }
 }

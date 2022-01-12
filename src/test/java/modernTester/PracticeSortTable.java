@@ -14,14 +14,14 @@ public class PracticeSortTable extends BaseTest {
         driver.get("https://seleniumui.moderntester.pl/sortable.php");
 
         Actions actions = new Actions(driver);
-//
-//        WebElement iteam1 = driver.findElement(By.xpath("//*[@id='sortable']/li[3]/text()"));
+
+//        WebElement iteam1 = driver.findElement(By.xpath("//*[@id='sortable']/li[Item 6]/text()"));
 //        WebElement iteam2 = driver.findElement(By.xpath("//*[@id='sortable']/li[5]/text()"));
 //
 //        actions.clickAndHold(iteam1)
 //                .moveToElement(iteam2)
 //                .release()
-//                .perform();   nie wiem
+//                .perform(); ?
 
     }
 }

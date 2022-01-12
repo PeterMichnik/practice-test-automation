@@ -16,7 +16,7 @@ public class PracticeResizable extends BaseTest {
         /** resize window to the right (10px) */
         Actions action = new Actions(driver);
         action.dragAndDropBy(resizeWindow,242,0).perform();
-        // jak sprawdzic pixele
+        // pixele ?
 
     }
 }
