@@ -20,8 +20,8 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
 
-
     }
+
     @AfterMethod
     public void tearDrown() {
         driver.quit();

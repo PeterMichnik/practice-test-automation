@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class PracticeMenu extends BaseTest {
 
     @Test
@@ -14,12 +16,12 @@ public class PracticeMenu extends BaseTest {
         WebElement music = driver.findElement(By.cssSelector("#ui-id-9"));
         music.click();
 
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         WebElement typeOfMusic = driver.findElement(By.cssSelector("#ui-id-13"));
         typeOfMusic.click();
 
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         WebElement typeOfJazz = driver.findElement(By.cssSelector("#ui-id-16"));
         typeOfJazz.click();
