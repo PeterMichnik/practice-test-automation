@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.List;
 
 public class PracticeWindowsTab extends BaseTest {
@@ -18,7 +19,7 @@ public class PracticeWindowsTab extends BaseTest {
 
         /** switch to a new browser window */
         try {
-            Thread.sleep(3000);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             for (String winHandle : driver.getWindowHandles()) {
                 driver.switchTo().window(winHandle);
             }
