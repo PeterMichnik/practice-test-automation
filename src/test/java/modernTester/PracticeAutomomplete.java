@@ -14,7 +14,13 @@ public class PracticeAutomomplete extends BaseTest {
         WebElement search = driver.findElement(By.cssSelector("#search"));
         search.sendKeys("a");
 
-        Thread.sleep(10000); // ?
+//        String options = driver.findElement(By.cssSelector("#ui-id-1")).getAttribute("anders");
+//        System.out.println("All options = " + options);
+
+        String options2 = driver.findElement(By.xpath("/html/body/ul/li/div")).getText();
+        System.out.println(options2);
+
+
     }
 
 }

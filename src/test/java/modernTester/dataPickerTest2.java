@@ -24,10 +24,8 @@ public class dataPickerTest2 extends BaseTest {
 
             String textMonth = driver.findElement(By.cssSelector(".ui-datepicker-month"))
                     .getText();
-
             if (textYear.equals(year) && (textMonth.equals(month))) {
                 break;
-
             } else {
                 WebElement leftArrow = driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[1]/span"));
                 leftArrow.click();
